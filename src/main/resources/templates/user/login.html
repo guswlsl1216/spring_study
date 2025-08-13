@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyeleaf.org">
+<head>
+
+<th:block th:insert="~{fragments/common :: head('로그인')}"></th:block>
+
+</head>
+<body>
+	<nav th:replace="~{fragments/common :: header}"></nav>
+	
+	<!--  실제 작업할 영역  -->
+	
+	<div class="container mt-3">
+   <form>
+     <div class="mb-3 mt-3">
+       <label for="username" class="form-label">userName:</label>
+       <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+     </div>
+     <div class="mb-3">
+       <label for="password" class="form-label">Password:</label>
+       <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+     </div>
+     <button id="btn-login" type="submit" class="btn btn-primary">로그인</button>
+   </form>
+</div>
+	
+	<div th:replace="~{fragments/common :: footer}"></div>
+	<th:block th:insert="~{fragments/common :: scripts}"></th:block>
+	<script src="/js/Login.js"></script>
+</body>
+</html>

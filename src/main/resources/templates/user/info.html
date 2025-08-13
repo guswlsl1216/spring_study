@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyemleaf.org">
+<head>
+
+<th:block th:insert="~{fragments/common :: head('회원정보')}"></th:block>
+
+</head>
+<body>
+	<nav th:replace="~{fragments/common :: header}"></nav>
+	
+	<div class="container mt-3">
+      <form>
+      	<input type="hidden" id="id" th:value="${info.id}">
+        <div class="mb-3 mt-3">
+          <label for="username" class="form-label">userName:</label>
+          <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" th:value="${info.username}">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" th:value="${info.email}">
+          <button id="btn-modify" type="submit" class="btn btn-primary">수정</button>
+          <button id="btn-delete" type="button" class="btn btn-danger">탈퇴</button>
+        </div>
+       
+      </form>
+   </div>
+	
+	<div th:replace="~{fragments/common :: footer}"></div>
+	<th:block th:insert="~{fragments/common :: scripts}"></th:block>
+  	<script src="/js/user.js"></script>
+</body>
+</html>

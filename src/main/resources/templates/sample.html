@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyeleaf.org">
+<head>
+
+<th:block th:insert="~{fragments/common :: head('title작성')}"></th:block>
+
+</head>
+<body>
+	<nav th:replace="~{fragments/common :: header}"></nav>
+	
+	<!--  실제 작업할 영역  -->
+	
+	<div th:replace="~{fragments/common :: footer}"></div>
+	<th:block th:insert="~{fragments/common :: scripts}"></th:block>
+</body>
+</html>
