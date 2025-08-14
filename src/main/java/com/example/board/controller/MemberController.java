@@ -121,7 +121,7 @@ public class MemberController {
 		User findUser = memberService.updateUser(user);
 		session.setAttribute("principal", findUser); 			// 세션에 담아있던 유저 정보를 덮어쓰기 해주는거임 
 		
-		return new ResponseDTO<>(HttpStatus.OK.value(), "회원정보 수정완료");
+		return new ResponseDTO<>(HttpStatus.OK.value(), "회원정보 수정완료"); //( 상태 코드와 메세지를 객체로 묶어서 보냄 )
 		
 	}
 	

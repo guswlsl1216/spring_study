@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyeleaf.org">
+<head>
+
+<th:block th:insert="~{fragments/common :: head('게시글수정')}"></th:block>
+
+</head>
+<body>
+	<nav th:replace="~{fragments/common :: header}"></nav>
+	
+	<div class="container border py-3 mt-3">
+    <form>
+      <input type="hidden" id="id" th:value="${post.id}" >
+      <div class="mb-3">
+        <label for="title">Title : </label> 
+        <input type="text" class="form-control" id="title" th:value="${post.title}" >
+      </div>
+      <div class="mb-3">
+        <label for="content">Content : </label>
+        <textarea class="form-control" id="content" th:text="${post.content}">
+   </textarea>
+      </div>
+
+    </form>
+
+
+    <hr>
+    <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+    <button id="btn-update" class="btn btn-warning">수정완료</button>
+  </div>
+	
+	<div th:replace="~{fragments/common :: footer}"></div>
+	<th:block th:insert="~{fragments/common :: scripts}"></th:block>
+	<script src="/js/post.js"></script>
+</body>
+</html>

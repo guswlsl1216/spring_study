@@ -37,6 +37,9 @@ dependencies {
 	
 	// https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
 	implementation 'com.mysql:mysql-connector-j'
+	
+	// https://mvnrepository.com/artifact/org.webjars.bower/summernote
+	implementation 'org.webjars.bower:summernote:0.8.20' // 얘는 버전정보 있어야함 
 }
 
 tasks.named('test') {

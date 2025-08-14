@@ -12,7 +12,10 @@ public class WebConfig implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		
 		registry.addInterceptor(new AuthInterceptor())
-				.addPathPatterns("/");
+				.addPathPatterns("/", "/post/**");
+		
+		// index에서만 막아달라고 되어 있어서 , 로 추가해줌
+		// ** 은 뭘 쓰든 다 막아줌 // * : 하나는 post/qqq // ** : 두개는 하위 경로까지 포함 post/qqq/dddd
 	
 	}
 }

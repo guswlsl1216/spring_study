@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyeleaf.org">
+<head>
+
+<th:block th:insert="~{fragments/common :: head('상세페이지')}"></th:block>
+
+</head>
+<body>
+	<nav th:replace="~{fragments/common :: header}"></nav>
+	
+	<div class="container border py-3 mt-3">
+    <div>
+      <h3 th:text="${post.title}">게시물 제목</h3>
+    </div>
+    <div>
+      <p th:utext="${post.content}">게시물 내용</p>
+    </div>
+    <div>
+      <p>포스트 번호 : <span class="id" th:text="${post.id}">1</span></p>
+      <p>작성자 : <span th:text="${post.user.username}">xxxx</span></p>
+    </div>
+    <hr>
+    <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+    <a th:href="@{|/post/update/${post.id}|}" class="btn btn-warning">수정하기</a>
+    <button id="btn-delete" class="btn btn-danger">삭제하기</button>
+  </div>
+	
+	<div th:replace="~{fragments/common :: footer}"></div>
+	<th:block th:insert="~{fragments/common :: scripts}"></th:block>
+	<script src="/js/post.js"></script>
+</body>
+</html>

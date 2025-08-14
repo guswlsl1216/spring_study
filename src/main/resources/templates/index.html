@@ -9,8 +9,77 @@
 	<nav th:replace="~{fragments/common :: header}"></nav>
 	
 	
-	<h1>인덱스 페이지</h1>
-	<p th:text="${msg}"></p>]
+	
+	
+	<h1>게시글 목록</h1>
+	
+	<div class="container mt-3">
+	<th:block th:if="${!postList.isEmpty()}">
+	
+    <div class="card" th:each="post : ${postList.content}">      
+      <div class="card-body">
+        <h4 class="card-title" th:text="${post.title}">게시물제목</h4>
+        <a th:href="@{|/post/${post.id}|}" class="btn btn-secondary">상세보기</a>
+      </div>
+    </div>
+  </th:block>
+  
+  <ul class="pagination justify-content-between">
+      <li class="page-item" th:classappend="${postList.first} ? 'disabled'">
+        <a class="page-link" th:href="@{|?page=${postList.number-1}|}">이전</a>
+      </li>
+      <li class="page-item" th:classappend="${postList.last} ? 'disabled'" >
+        <a class="page-link" th:href="@{|?page=${postList.number+1}|}" >다음</a>
+      </li>
+    </ul>
+    
+    <br>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item" 
+          th:each="i : ${#numbers.sequence(0, postList.totalPages-1)}"
+          th:classappend="${ i== postList.number} ? 'active'" >
+          <a class="page-link " th:href="@{|?page=${i-1}|}" th:text="${i}">1</a>
+          </li>
+         
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" th:classappend="${pageDTO.prev} ? '' : 'disabled'">
+            <a class="page-link" th:href="@{|?page=${pageDTO.startPage - 2}|}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item" 
+          th:each="i : ${#numbers.sequence(pageDTO.startPage, pageDTO.endPage)}"
+          th:classappend="${ i== postList.number+1} ? 'active'" >
+          <a class="page-link " th:href="@{|?page=${i-1}|}" th:text="${i}">1</a>
+          </li>
+         
+          <li class="page-item" th:classappend="${pageDTO.next} ? '' : 'disabled'">
+            <a class="page-link" th:href="@{|?page=${pageDTO.endPage}|}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+   
+   
+  </div>
+	
 	
 	<div th:replace="~{fragments/common :: footer}"></div>
 	<th:block th:insert="~{fragments/common :: scripts}"></th:block>
